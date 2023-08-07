@@ -1,14 +1,15 @@
 import { useState } from "react";
+import Header from './Header'
+import Footer from "./Footer";
+
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
       <div className="container m-auto">
-        <p>I am a cookbook!</p>
-        <button onClick={() => setCount((c) => c + 1)} className="border rounded shadow p-2 hover:bg-slate-200">
-          Count: {count}
-        </button>
+        <Header />
+        <Footer />
       </div>
     </>
   );
