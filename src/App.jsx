@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from './Header'
 import Footer from "./Footer";
+import Recipe from "./components/Recipe"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +12,7 @@ function App() {
         <Header />
         <Footer />
       </div>
+      <Recipe/>
     </>
   );
 }
