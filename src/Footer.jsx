@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral border-t border-black fixed bottom-0 w-full">
+    <footer className="bg-neutral border-t border-black bottom-0 w-full">
       <div className="max-w-screen-xl mx-auto py-6 px-4 flex justify-between">
         <div className="flex items-center space-x-4">
           {/* Add your social media icons here */}
@@ -27,10 +27,7 @@ const Footer = () => {
               placeholder="Enter your email"
               className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-500"
             />
-            <button
-              type="submit"
-              className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2"
-            >
+            <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2">
               Subscribe
             </button>
           </form>
