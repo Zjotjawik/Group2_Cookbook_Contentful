@@ -46,12 +46,12 @@ const RecipeList = ({ title, recipes }) => {
       <div className="grid gap-y-4 relative h-[40vh]">
         <div
           className={
-            "absolute flex left-0 top-0 bg-gradient-to-r from-white w-20 h-full justify-center items-center transition-all duration-300 ease-in-out" +
+            "absolute flex left-0 top-0 bg-gradient-to-r from-white w-20 h-full justify-start items-center transition-all duration-300 ease-in-out" +
             (isLeft ? " opacity-0 -z-50" : " opacity-100")
           }
         >
           <button
-            className="w-12 h-12 p-2 flex border rounded-full items-center justify-center bg-white hover:bg-gray-200 z-50"
+            className="w-12 h-12 p-2 flex border rounded-full items-center justify-center bg-white hover:bg-gray-200 z-50 shadow-md"
             onClick={() => scrollTo(-150)}
           >
             <ArrowLeftIcon className="w-10 h-10" />
@@ -63,12 +63,12 @@ const RecipeList = ({ title, recipes }) => {
 
         <div
           className={
-            "absolute flex right-0 top-0 bg-gradient-to-l from-white w-20 h-full justify-center items-center transition-all duration-300 ease-in-out" +
+            "absolute flex right-0 top-0 bg-gradient-to-l from-white w-20 h-full justify-end items-center transition-all duration-300 ease-in-out" +
             (isRight ? " opacity-0 -z-50" : " opacity-100")
           }
         >
           <button
-            className="w-12 h-12 p-2 flex border rounded-full items-center justify-center bg-white hover:bg-gray-200 z-50"
+            className="w-12 h-12 p-2 flex border rounded-full items-center justify-center bg-white hover:bg-gray-200 z-50 shadow-md"
             onClick={() => scrollTo(150)}
           >
             <ArrowRightIcon className="w-10 h-10" />
