@@ -11,6 +11,24 @@ const Header = () => {
     setIsDropdown3Open(false);
   };
 
+  const toggleDropdown1 = () => {
+    setIsDropdown1Open(!isDropdown1Open);
+    setIsDropdown2Open(false);
+    setIsDropdown3Open(false);
+  };
+
+  const toggleDropdown2 = () => {
+    setIsDropdown1Open(false);
+    setIsDropdown2Open(!isDropdown2Open);
+    setIsDropdown3Open(false);
+  };
+
+  const toggleDropdown3 = () => {
+    setIsDropdown1Open(false);
+    setIsDropdown2Open(false);
+    setIsDropdown3Open(!isDropdown3Open);
+  };
+
   return (
     <header className="bg-white border-b border-black w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +51,7 @@ const Header = () => {
             <div
               className="relative inline-block text-left"
               onMouseEnter={() => setIsDropdown1Open(true)}
-              onClick={closeDropdowns}
+              onClick={toggleDropdown1}
             >
               <div>
                 <button
@@ -73,7 +91,7 @@ const Header = () => {
             <div
               className="relative inline-block text-left"
               onMouseEnter={() => setIsDropdown2Open(true)}
-              onClick={closeDropdowns}
+              onClick={toggleDropdown2}
             >
               <div>
                 <button
@@ -113,7 +131,7 @@ const Header = () => {
             <div
               className="relative inline-block text-left"
               onMouseEnter={() => setIsDropdown3Open(true)}
-              onClick={closeDropdowns}
+              onClick={toggleDropdown3}
             >
               <div>
                 <button
