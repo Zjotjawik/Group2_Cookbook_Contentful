@@ -1,0 +1,28 @@
+{
+  "metadata": { "tags": [] },
+  "sys": {
+    "space": { "sys": { "type": "Link", "linkType": "Space", "id": "jgfm5t7mdmq8" } },
+    "id": "31fzOgmlD3JJ9gnpKq9LKq",
+    "type": "Entry",
+    "createdAt": "2023-08-03T14:39:23.527Z",
+    "updatedAt": "2023-08-07T12:06:10.185Z",
+    "environment": { "sys": { "id": "master", "type": "Link", "linkType": "Environment" } },
+    "createdBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+    "updatedBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+    "publishedCounter": 0,
+    "version": 10,
+    "automationTags": [],
+    "contentType": { "sys": { "type": "Link", "linkType": "ContentType", "id": "category" } }
+  },
+  "fields": {
+    "name": { "en-US": "Fictional Food" },
+    "description": { "en-US": "This stuff doesn't really exist..." },
+    "recipes": {
+      "en-US": [
+        { "sys": { "type": "Link", "linkType": "Entry", "id": "3cCPVwcqrEGz7RDWqCrgJQ" } },
+        { "sys": { "type": "Link", "linkType": "Entry", "id": "BkvVyWdAzNsiUxdCPhMmu" } }
+      ]
+    },
+    "images": { "en-US": [{ "sys": { "type": "Link", "linkType": "Asset", "id": "1ouDUXkNl7IDrLQWhRxqJI" } }] }
+  }
+}
