@@ -9,7 +9,7 @@ const HeroRecipe = ({ recipe }) => {
         <div className="grid grid-cols-2 place-items-center items-start gap-x-12">
           {/* Hero Image */}
 
-          <Link to={`/recipes/${recipe.id}`}>
+          <Link to={`/recipe/${recipe.id}`}>
             <img src={recipe.image} alt={recipe.name} className="h-[42vh] rounded-2xl" />
           </Link>
 

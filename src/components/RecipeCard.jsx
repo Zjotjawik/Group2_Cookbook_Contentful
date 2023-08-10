@@ -16,7 +16,7 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <Link
-      to={`/recipes/${recipe.id}`}
+      to={`/recipe/${recipe.id}`}
       className="min-w-[13vw] min-h-[15vh] border border-gray-300 rounded-xl hover:shadow-md overflow-hidden flex-grow-0 basis-full"
     >
       {/* Cover Image */}
