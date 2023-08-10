@@ -1,0 +1,39 @@
+{
+  "metadata": { "tags": [] },
+  "sys": {
+    "space": { "sys": { "type": "Link", "linkType": "Space", "id": "jgfm5t7mdmq8" } },
+    "id": "3cCPVwcqrEGz7RDWqCrgJQ",
+    "type": "Entry",
+    "createdAt": "2023-08-07T12:05:57.488Z",
+    "updatedAt": "2023-08-07T12:49:48.821Z",
+    "environment": { "sys": { "id": "master", "type": "Link", "linkType": "Environment" } },
+    "createdBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+    "updatedBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+    "publishedCounter": 0,
+    "version": 12,
+    "automationTags": [],
+    "contentType": { "sys": { "type": "Link", "linkType": "ContentType", "id": "recipe" } }
+  },
+  "fields": {
+    "name": { "en-US": "Test Recipe" },
+    "description": { "en-US": "Just a test and nothing more" },
+    "preparationTimeMin": { "en-US": 600 },
+    "servings": { "en-US": "42" },
+    "ingriedient": {
+      "en-US": {
+        "ingredients": [
+          { "name": "Food", "unit": "buckets", "amount": 3 },
+          { "name": "Stuff", "unit": "container", "amount": 1 }
+        ]
+      }
+    },
+    "instructions": {
+      "en-US": {
+        "steps": [
+          { "step": 1, "instruction": "Do something" },
+          { "step": 2, "instruction": "Do another thing" }
+        ]
+      }
+    }
+  }
+}

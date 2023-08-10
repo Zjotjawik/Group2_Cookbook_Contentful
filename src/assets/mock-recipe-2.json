@@ -1,0 +1,69 @@
+{
+  "sys": { "type": "Array" },
+  "items": [
+    {
+      "metadata": { "tags": [] },
+      "sys": {
+        "space": { "sys": { "type": "Link", "linkType": "Space", "id": "jgfm5t7mdmq8" } },
+        "id": "BkvVyWdAzNsiUxdCPhMmu",
+        "type": "Entry",
+        "createdAt": "2023-08-07T12:03:17.416Z",
+        "updatedAt": "2023-08-07T12:05:51.811Z",
+        "environment": { "sys": { "id": "master", "type": "Link", "linkType": "Environment" } },
+        "createdBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+        "updatedBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+        "publishedCounter": 0,
+        "version": 14,
+        "automationTags": [],
+        "contentType": { "sys": { "type": "Link", "linkType": "ContentType", "id": "recipe" } }
+      },
+      "fields": {
+        "name": { "en-US": "Tomacco Salad" },
+        "description": { "en-US": ".....dfaerwefasdfsadf" },
+        "preparationTimeMin": { "en-US": 120 },
+        "servings": { "en-US": "1" },
+        "ingriedient": {
+          "en-US": {
+            "ingredients": [
+              { "name": "Tomacco", "unit": "fruit", "amount": 1 },
+              { "name": "Water", "unit": "liter", "amount": 1 }
+            ]
+          }
+        },
+        "instructions": { "en-US": { "steps": [{ "step": 1, "instruction": "Do something" }] } },
+        "images": { "en-US": [{ "sys": { "type": "Link", "linkType": "Asset", "id": "1ouDUXkNl7IDrLQWhRxqJI" } }] }
+      }
+    }
+  ],
+  "includes": {
+    "Asset": [
+      {
+        "metadata": { "tags": [] },
+        "sys": {
+          "space": { "sys": { "type": "Link", "linkType": "Space", "id": "jgfm5t7mdmq8" } },
+          "id": "1ouDUXkNl7IDrLQWhRxqJI",
+          "type": "Asset",
+          "createdAt": "2023-08-03T14:52:13.892Z",
+          "updatedAt": "2023-08-03T14:52:28.274Z",
+          "environment": { "sys": { "id": "master", "type": "Link", "linkType": "Environment" } },
+          "createdBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+          "updatedBy": { "sys": { "type": "Link", "linkType": "User", "id": "53CI8eeE2P3fC860qWgdHE" } },
+          "publishedCounter": 0,
+          "version": 5
+        },
+        "fields": {
+          "title": { "en-US": "Tomacco" },
+          "description": { "en-US": "" },
+          "file": {
+            "en-US": {
+              "url": "//images.ctfassets.net/jgfm5t7mdmq8/1ouDUXkNl7IDrLQWhRxqJI/ff8ea1c2b2dbca94ab3d67482f328d75/54f63f5fbb2ba_-_the-simpsons-tomacco-del-fictional-foods-xl.jpg",
+              "details": { "size": 20202, "image": { "width": 320, "height": 320 } },
+              "fileName": "54f63f5fbb2ba_-_the-simpsons-tomacco-del-fictional-foods-xl.jpg",
+              "contentType": "image/jpeg"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
