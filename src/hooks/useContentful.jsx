@@ -1,44 +1,38 @@
 // Just some mockdata
-import mockCategory from "../assets/mock-category.json";
+import { createClient } from "contentful";
+
+// import mockCategory from "../assets/mock-category.json";
 import mockRecipe1 from "../assets/mock-recipe-1.json";
 import mockRecipe2 from "../assets/mock-recipe-2.json";
 
 const useContentful = () => {
   const fallbackImage = "/fallback.jpg";
 
-  const cleanRecipe = (recipeRaw) => {
-    // todo: above should be the actual calls to contentful
-    const locale = "en-US";
+  // create contentful client
+  const options = {
+    space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+    accessToken: import.meta.env.VITE_CONTENTFUL_API_KEY,
+    host: "preview.contentful.com",
+  };
+  const client = createClient(options);
 
+  // Helper function: clean up a single recipe by extracting relevant information
+  const cleanRecipe = (recipeRaw) => {
     if (!recipeRaw.fields && !recipeRaw.items) return null;
-    const recipe = recipeRaw.fields || recipeRaw.items[0].fields;
+    const recipe = recipeRaw.fields;
 
     // recipe data
-    const name = recipe.name[locale];
-    const description = recipe.description[locale];
-    const ingredients = recipe.ingriedient[locale].ingredients;
-    const instructions = recipe.instructions[locale].steps;
-    const servings = recipe.servings[locale];
-    const preparationTimeMin = recipe.preparationTimeMin[locale];
-    const id = recipeRaw.sys.id || recipeRaw.items[0].sys.id;
-    let image = "";
+    const name = recipe.name;
+    const description = recipe.description;
+    const ingredients = recipe.ingriedient.ingredients;
+    const instructions = recipe.instructions.steps;
+    const servings = recipe.servings;
+    const preparationTimeMin = recipe.preparationTimeMin;
+    const id = recipeRaw.sys.id;
+    let image = fallbackImage;
 
-    // check images, select 1 and get URL
-
-    try {
-      const images = recipe.images[locale];
-      const assetType = images[0].sys.linkType;
-
-      if (assetType === "Asset") {
-        const assetId = images[0].sys.id;
-        image = recipeRaw.includes.Asset.find((img) => img.sys.id === assetId).fields.file[locale].url;
-      } else {
-        // todo: maybe there are more types, who knows, but for now:
-        image = fallbackImage;
-      }
-    } catch (error) {
-      image = fallbackImage;
-      console.info("Error locating image: ", error.message);
+    if (recipeRaw.fields.images && recipeRaw.fields.images.length > 0) {
+      image = recipeRaw.fields.images[0].fields.file.url;
     }
 
     return {
@@ -53,28 +47,82 @@ const useContentful = () => {
     };
   };
 
-  // TODO: change all of these to actually use contentful
+  /**
+   * Clean up recipes
+   * @param {Array} recipeArray
+   * @returns
+   */
+  const cleanRecipes = (recipeArray) => {
+    if (!recipeArray) return [];
 
-  // get category
-  const getCategory = (categoryName) => {
-    return mockCategory;
+    const cleanRecipiesData = recipeArray.items.map((r) => cleanRecipe(r));
+
+    return cleanRecipiesData;
   };
 
-  // todo: get category with referenced recipes
+  // cleanup a single category entry
+  const cleanCategories = (categoryRaw) => {
+    if (!categoryRaw) return [];
+
+    const cleanCategoryData = categoryRaw.map((c) => {
+      const images =
+        c.fields.images &&
+        c.fields.images.map((img) => {
+          return {
+            name: img.fields.title,
+            description: img.fields.description,
+            url: img.fields.file.url,
+          };
+        });
+
+      return {
+        id: c.sys.id,
+        name: c.fields.name,
+        description: c.fields.description,
+        images,
+      };
+    });
+
+    return cleanCategoryData;
+  };
+
+  // get all categories
+  const getCategories = async () => {
+    const categoryData = await client.getEntries({ content_type: "category" });
+
+    if (!categoryData.items) return [];
+
+    const cleanCategoryData = cleanCategories(categoryData.items);
+
+    return cleanCategoryData;
+  };
+
+  // get a single category
+  const getCategory = async (categoryName) => {
+    const categories = await getCategories();
+
+    return categories.find((c) => c.name === categoryName) ?? {};
+  };
 
   // get recipe
-  const getRecipe = (recipeName) => {
-    return cleanRecipe(mockRecipe2);
+  const getRecipe = async (id) => {
+    const recipeData = await client.getEntry(id);
+
+    return cleanRecipe(recipeData);
   };
 
-  // get multiple recipes
-  const getRecipes = () => {
-    const mocks = [mockRecipe1, mockRecipe2, mockRecipe1, mockRecipe2, mockRecipe1, mockRecipe2];
+  /**
+   * Returns all recipes per category (categoryName) or all recipes (null)
+   */
+  const getRecipes = async () => {
+    const recipeData = await client.getEntries({ content_type: "recipe" });
 
-    return mocks.map((m) => cleanRecipe(m));
+    const cleanRecipeData = cleanRecipes(recipeData);
+
+    return cleanRecipeData;
   };
 
-  return { getCategory, getRecipe, getRecipes };
+  return { getCategory, getCategories, getRecipe, getRecipes };
 };
 
 export default useContentful;

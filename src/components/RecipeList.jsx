@@ -4,10 +4,14 @@ import RecipeCard from "./RecipeCard";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const RecipeList = ({ title, recipes }) => {
-  const scrollContainerRef = useRef(null);
+  // state
   const [isLeft, setIsLeft] = useState(true);
   const [isRight, setIsRight] = useState(false);
 
+  // refs
+  const scrollContainerRef = useRef(null);
+
+  // check scroll position to determine if we have hit the left / right edges
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
@@ -17,6 +21,7 @@ const RecipeList = ({ title, recipes }) => {
     }
   };
 
+  // scroll by amount of pixel (-direction -> left, +direction -> right)
   const scrollTo = (direction) => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
@@ -42,8 +47,12 @@ const RecipeList = ({ title, recipes }) => {
 
   return (
     <>
+      {/* Title */}
       <h2 className="font-bold uppercase text-orange-500 mb-4">{title}</h2>
+
+      {/* Content */}
       <div className="grid gap-y-4 relative h-[40vh]">
+        {/* Scroll Left Area */}
         <div
           className={
             "absolute flex left-0 top-0 bg-gradient-to-r from-white w-20 h-full justify-start items-center transition-all duration-300 ease-in-out" +
@@ -57,10 +66,13 @@ const RecipeList = ({ title, recipes }) => {
             <ArrowLeftIcon className="w-10 h-10" />
           </button>
         </div>
+
+        {/* Recipe Card List */}
         <div className="flex flex-nowrap overflow-x-scroll gap-4 pb-4" ref={scrollContainerRef}>
           {recipes && recipes.map((recipe, i) => <RecipeCard key={i} recipe={recipe} />)}
         </div>
 
+        {/* Right Scroll Area */}
         <div
           className={
             "absolute flex right-0 top-0 bg-gradient-to-l from-white w-20 h-full justify-end items-center transition-all duration-300 ease-in-out" +

@@ -6,11 +6,14 @@ const HeroRecipe = ({ recipe }) => {
     <>
       {recipe && (
         <div className="grid grid-cols-2 justify-between items-start">
+          {/* Hero Image */}
           <div>
             <a href="#">
               <img src={recipe.image} alt={recipe.name} className="h-[42vh] rounded-2xl" />
             </a>
           </div>
+
+          {/* Hero Content */}
           <div className="grid justify-start gap-y-4">
             <a href="#">
               <h4 className="font-bold uppercase text-orange-500">Have you tried this recipe yet?</h4>

@@ -18,7 +18,10 @@ const RecipeCard = ({ recipe }) => {
       href="#"
       className="min-w-[13vw] border border-gray-300 rounded-xl hover:shadow-md overflow-hidden flex-grow-0 basis-full"
     >
+      {/* Cover Image */}
       <img src={recipe.image} alt={recipe.name} className="w-full h-1/2 object-cover" />
+
+      {/* Content */}
       <div className="h-1/2 flex flex-col">
         <h3 className="p-2 font-bold text-lg">{recipe.name}</h3>
         {recipe.servings && (
