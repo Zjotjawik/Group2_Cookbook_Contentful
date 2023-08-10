@@ -63,6 +63,7 @@ const Homepage = () => {
             <div>{latestRecipes && <RecipeList title={"Latest Recipes"} recipes={latestRecipes} />}</div>
           </>
         )}
+        <div className="mt-8"></div>
       </div>
     </>
   );

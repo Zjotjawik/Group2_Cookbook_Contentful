@@ -18,8 +18,6 @@ const RecipeList = ({ title, recipes }) => {
 
       setIsLeft(scrollLeft === 0);
       setIsRight(Math.ceil(scrollLeft) === scrollWidth - clientWidth);
-
-      console.log(scrollWidth - clientWidth);
     }
   };
 
