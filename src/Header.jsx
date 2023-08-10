@@ -29,7 +29,7 @@ const Header = () => {
         </div>
 
         <div className="flex justify-start">
-          <div className="mt-4 space-x-4">
+          <div className="mt-4 space-x-10">
             <div
               className="relative inline-block text-left"
               onMouseEnter={() => setIsDropdown1Open(true)}
@@ -39,7 +39,7 @@ const Header = () => {
                 <button
                   className="inline-flex justify-center w-full px-10 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none"
                 >
-                  Dropdown 1
+                  <span className='text-lg'>Dropdown 1</span>
                 </button>
               </div>
               <div
@@ -79,7 +79,7 @@ const Header = () => {
                 <button
                   className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none"
                 >
-                  Dropdown 2
+                  <span className='text-lg'>Dropdown 2</span>
                 </button>
               </div>
               <div
@@ -119,7 +119,7 @@ const Header = () => {
                 <button
                   className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none"
                 >
-                  Dropdown 3
+                  <span className='text-lg'>Dropdown 3</span>
                 </button>
               </div>
               <div
