@@ -3,12 +3,12 @@ import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ClipboardDocumentIcon, AtSymbolIcon } from "@heroicons/react/24/outline";
 
-const ShareButtons = ({ recipeName }) => {
+const ShareButtons = ({ recipeName, recipeId }) => {
   // state
   const [copied, setCopied] = useState(false);
 
   // some calculated values
-  const shareLink = window.location.href;
+  const shareLink = window.location.origin + `/recipes/${recipeId}`;
   const encodedSubject = encodeURIComponent(`WBS Cookbook - ${recipeName}`);
   const encodedBody = encodeURIComponent(`Check out this awesome recipe:\n${shareLink}`);
   const encodedLink = `mailto:?Subject=${encodedSubject}&body=${encodedBody}`;

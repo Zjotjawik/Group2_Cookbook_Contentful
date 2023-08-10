@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { ClockIcon, FireIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
   // get a nicer hours / minutes display
@@ -14,18 +15,18 @@ const RecipeCard = ({ recipe }) => {
   };
 
   return (
-    <a
-      href="#"
-      className="min-w-[13vw] border border-gray-300 rounded-xl hover:shadow-md overflow-hidden flex-grow-0 basis-full"
+    <Link
+      to={`/recipes/${recipe.id}`}
+      className="min-w-[13vw] min-h-[15vh] border border-gray-300 rounded-xl hover:shadow-md overflow-hidden flex-grow-0 basis-full"
     >
       {/* Cover Image */}
       <img src={recipe.image} alt={recipe.name} className="w-full h-1/2 object-cover" />
 
       {/* Content */}
-      <div className="h-1/2 flex flex-col">
-        <h3 className="p-2 font-bold text-lg">{recipe.name}</h3>
+      <div className="h-1/2 grid flex-col">
+        <h3 className="p-2 font-bold text-lg h-16">{recipe.name}</h3>
         {recipe.servings && (
-          <div className="flex items-start flex-1 ">
+          <div className="flex items-start">
             <div className="flex gap-2 px-2 py-3 items-center">
               <FireIcon className="w-4 h-4" />
               {recipe.servings} servings
@@ -39,7 +40,7 @@ const RecipeCard = ({ recipe }) => {
           </div>
         )}
       </div>
-    </a>
+    </Link>
   );
 };
 

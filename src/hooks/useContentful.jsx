@@ -29,6 +29,7 @@ const useContentful = () => {
     const servings = recipe.servings;
     const preparationTimeMin = recipe.preparationTimeMin;
     const id = recipeRaw.sys.id;
+    const created = recipeRaw.sys.createdAt;
     let image = fallbackImage;
 
     if (recipeRaw.fields.images && recipeRaw.fields.images.length > 0) {
@@ -37,6 +38,7 @@ const useContentful = () => {
 
     return {
       id,
+      created,
       name,
       description,
       ingredients,
