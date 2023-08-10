@@ -26,9 +26,9 @@ const Recipe = () => {
 
   const RecipeTitle = ({ title }) => {
     return (
-      <div className="flex justify-center my-3 my-lg-5">
+      <div className="flex justify-center my-3 my-lg-5 ">
         <div className="w-10/12 md:w-10/12 lg:w-8/12">
-          <h1 className="text-center">{title}</h1>
+          <h1 className="text-center text-4xl font-extrabold pb-8">{title}</h1>
         </div>
       </div>
     );
@@ -38,7 +38,7 @@ const Recipe = () => {
     return (
       <div className="flex justify-center my-3 my-lg-5">
         <div className="w-10/12 md:w-10/12 lg:w-8/12">
-          <p className="text-secondary text-center">{description}</p>
+          <p className="text-secondary text-center pb-8">{description}</p>
         </div>
       </div>
     );
@@ -53,6 +53,7 @@ const Recipe = () => {
               className="img-fluid rounded mx-auto d-block w-1/2 p-3 shadow"
               src={imageUrl}
               alt={altText}
+              title={altText}
             />
             <div className="hover-caption">
               <span className="shadow-lg">{altText}</span>
