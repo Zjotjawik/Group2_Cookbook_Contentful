@@ -18,6 +18,8 @@ const RecipeList = ({ title, recipes }) => {
 
       setIsLeft(scrollLeft === 0);
       setIsRight(Math.ceil(scrollLeft) === scrollWidth - clientWidth);
+
+      console.log(scrollWidth - clientWidth);
     }
   };
 
@@ -34,6 +36,8 @@ const RecipeList = ({ title, recipes }) => {
 
   // check scroll position
   useEffect(() => {
+    checkScrollPosition();
+
     if (scrollContainerRef.current) {
       scrollContainerRef.current.addEventListener("scroll", checkScrollPosition);
     }
@@ -51,7 +55,7 @@ const RecipeList = ({ title, recipes }) => {
       <h2 className="font-bold uppercase text-orange-500 mb-4">{title}</h2>
 
       {/* Content */}
-      <div className="grid gap-y-4 relative h-[40vh]">
+      <div className="grid gap-y-4 relative min-h-[10vh]">
         {/* Scroll Left Area */}
         <div
           className={

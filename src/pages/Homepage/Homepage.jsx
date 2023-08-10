@@ -3,33 +3,42 @@ import HeroRecipe from "../../components/HeroRecipe";
 import RecipeList from "../../components/RecipeList";
 import useContentful from "../../hooks/useContentful";
 import { Helmet } from "react-helmet";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 
 const Homepage = () => {
   // state
   const [heroRecipe, setHeroRecipe] = useState(null);
-  const [recipeArray, setRecipeArray] = useState(null);
-  const [categories, setCategories] = useState(null);
+  const [latestRecipes, setLatestRecipes] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // hooks
-  const { getRecipe, getRecipes, getCategories, getCategory } = useContentful();
+  const { getRecipes } = useContentful();
 
   useEffect(() => {
-    // TODO: all of this is just mock data
-    //setHeroRecipe(getRecipe());
+    // fetch recipes
     getRecipes()
-      .then((result) => console.log("Fetch in Component", result))
-      .catch((error) => console.log(error));
-    // getRecipe("1Q1S7ojEM8PZPU2XxliMhx")
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log(error));
-    // getCategories()
-    //   .then((result) => {
-    //     console.log(result);
-    //   })
-    //   .catch((error) => console.log(error));
-    // getCategory("Fictional Food")
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log(error));
+      .then((result) => {
+        setIsLoading(false);
+        setHasError(false);
+        setErrorMessage("");
+
+        // select random hero recipe
+        const hero = result[Math.floor(Math.random() * result.length)];
+        setHeroRecipe(hero);
+
+        // find most recent recipes;
+        result.sort((a, b) => a.created > b.created);
+        setLatestRecipes(result);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setHasError(true);
+        setErrorMessage(error.message);
+      });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,11 +48,21 @@ const Homepage = () => {
       <Helmet>
         <title>Welcome to WBS Group 2 Cookbook</title>
       </Helmet>
-
       <div className="my-10 grid gap-y-10 max-w-7xl mx-auto">
-        {/* <div>{heroRecipe && <HeroRecipe recipe={heroRecipe} />}</div>
-        <div>{recipeArray && <RecipeList title={"Test Recipes"} recipes={recipeArray} />}</div>
-        <div>{recipeArray && <RecipeList title={"More stuff"} recipes={recipeArray} />}</div> */}
+        {/* Loading */}
+        {isLoading && <Loading />}
+
+        {/* Error occured */}
+        {!isLoading && hasError && <Error errorMessage={errorMessage} />}
+
+        {/* Display Components */}
+        {!isLoading && !hasError && (
+          <>
+            <div>{heroRecipe && <HeroRecipe recipe={heroRecipe} />}</div>
+            <div className="mt-4"></div>
+            <div>{latestRecipes && <RecipeList title={"Latest Recipes"} recipes={latestRecipes} />}</div>
+          </>
+        )}
       </div>
     </>
   );
