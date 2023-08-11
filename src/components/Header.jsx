@@ -100,7 +100,7 @@ const Header = () => {
                     Zucchini Salad
                   </Link>
                   <Link
-                    to="/recipes/pYoW6CIEqPWfqAwYLyUf8"
+                    to="/recipe/pYoW6CIEqPWfqAwYLyUf8"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Juicy Lucy Burger
@@ -132,7 +132,7 @@ const Header = () => {
                     Tomacca Salad
                   </Link>
                   <Link
-                    to="/recipes/pYoW6CIEqPWfqAwYLyUf8"
+                    to="/recipe/pYoW6CIEqPWfqAwYLyUf8"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Juicy Lucy Burger
