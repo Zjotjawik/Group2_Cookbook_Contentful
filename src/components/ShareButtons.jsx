@@ -8,7 +8,7 @@ const ShareButtons = ({ recipeName, recipeId }) => {
   const [copied, setCopied] = useState(false);
 
   // some calculated values
-  const shareLink = window.location.origin + `/recipes/${recipeId}`;
+  const shareLink = window.location.origin + `/recipe/${recipeId}`;
   const encodedSubject = encodeURIComponent(`WBS Cookbook - ${recipeName}`);
   const encodedBody = encodeURIComponent(`Check out this awesome recipe:\n${shareLink}`);
   const encodedLink = `mailto:?Subject=${encodedSubject}&body=${encodedBody}`;

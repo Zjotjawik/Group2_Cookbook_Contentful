@@ -3,32 +3,16 @@ import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isDropdown1Open, setIsDropdown1Open] = useState(false);
-  const [isDropdown2Open, setIsDropdown2Open] = useState(false);
-  const [isDropdown3Open, setIsDropdown3Open] = useState(false);
+  // really just a workaround to have all 3 dropdowns sync...
+  const [dropdownState, setDropDownState] = useState([false, false, false]);
 
-  const closeDropdowns = () => {
-    setIsDropdown1Open(false);
-    setIsDropdown2Open(false);
-    setIsDropdown3Open(false);
+  const toggleState = (index) => {
+    const newState = dropdownState.map((st, i) => (i === index ? !st : false));
+    setDropDownState(newState);
   };
 
-  const toggleDropdown1 = () => {
-    setIsDropdown1Open(!isDropdown1Open);
-    setIsDropdown2Open(false);
-    setIsDropdown3Open(false);
-  };
-
-  const toggleDropdown2 = () => {
-    setIsDropdown1Open(false);
-    setIsDropdown2Open(!isDropdown2Open);
-    setIsDropdown3Open(false);
-  };
-
-  const toggleDropdown3 = () => {
-    setIsDropdown1Open(false);
-    setIsDropdown2Open(false);
-    setIsDropdown3Open(!isDropdown3Open);
+  const toggleAllOff = () => {
+    setDropDownState([false, false, false]);
   };
 
   return (
@@ -49,88 +33,110 @@ const Header = () => {
           <div className="mt-4 space-x-10">
             <div
               className="relative inline-block text-left"
-              onMouseEnter={() => setIsDropdown1Open(true)}
-              onClick={toggleDropdown1}
+              onMouseEnter={() => setDropDownState([true, false, false])}
+              onClick={() => toggleState(0)}
             >
               <div>
                 <button className="inline-flex justify-center w-full px-10 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none">
-                  <span className="text-lg">Dropdown 1</span>
+                  <span className="text-lg">What to cook today</span>
                 </button>
               </div>
               <div
                 className={`${
-                  isDropdown1Open ? "block" : "hidden"
+                  dropdownState[0] ? "block" : "hidden"
                 } origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5`}
-                onMouseLeave={() => setIsDropdown1Open(false)}
+                onMouseLeave={() => toggleAllOff()}
               >
                 <div className="py-1">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 1
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 2
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 3
-                  </a>
+                  <div className="px-4 py-2 font-bold">Our recommendations</div>
+                  <Link
+                    to="/recipe/1rAAGGMt6tGMttXQN2y7tw"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Tomacca Salad
+                  </Link>
+                  <Link
+                    to="/recipe/1Q1S7ojEM8PZPU2XxliMhx"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Smashed Cucumber Salad
+                  </Link>
+                  <Link
+                    to="/recipe/15BH2v4FKpop21fOLgdfG9"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Zucchini Salad
+                  </Link>
                 </div>
               </div>
             </div>
             <div
               className="relative inline-block text-left"
-              onMouseEnter={() => setIsDropdown2Open(true)}
-              onClick={toggleDropdown2}
+              onMouseEnter={() => setDropDownState([false, true, false])}
+              onClick={() => toggleState(1)}
             >
               <div>
                 <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none">
-                  <span className="text-lg">Dropdown 2</span>
+                  <span className="text-lg">Healthy</span>
                 </button>
               </div>
               <div
                 className={`${
-                  isDropdown2Open ? "block" : "hidden"
+                  dropdownState[1] ? "block" : "hidden"
                 } origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5`}
-                onMouseLeave={() => setIsDropdown2Open(false)}
+                onMouseLeave={() => toggleAllOff()}
               >
                 <div className="py-1">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 1
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 2
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 3
-                  </a>
+                  <Link
+                    to="/recipe/1Q1S7ojEM8PZPU2XxliMhx"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Smashed Cucumber Salad
+                  </Link>
+                  <Link
+                    to="/recipe/15BH2v4FKpop21fOLgdfG9"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Zucchini Salad
+                  </Link>
+                  <Link
+                    to="/recipes/pYoW6CIEqPWfqAwYLyUf8"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Juicy Lucy Burger
+                  </Link>
                 </div>
               </div>
             </div>
             <div
               className="relative inline-block text-left"
-              onMouseEnter={() => setIsDropdown3Open(true)}
-              onClick={toggleDropdown3}
+              onMouseEnter={() => setDropDownState([false, false, true])}
+              onClick={() => toggleState(2)}
             >
               <div>
                 <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none">
-                  <span className="text-lg">Dropdown 3</span>
+                  <span className="text-lg">Every Day</span>
                 </button>
               </div>
               <div
                 className={`${
-                  isDropdown3Open ? "block" : "hidden"
+                  dropdownState[2] ? "block" : "hidden"
                 } origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5`}
-                onMouseLeave={() => setIsDropdown3Open(false)}
+                onMouseLeave={() => toggleAllOff()}
               >
                 <div className="py-1">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 1
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 2
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Item 3
-                  </a>
+                  <Link
+                    to="/recipe/1rAAGGMt6tGMttXQN2y7tw"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Tomacca Salad
+                  </Link>
+                  <Link
+                    to="/recipes/pYoW6CIEqPWfqAwYLyUf8"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Juicy Lucy Burger
+                  </Link>
                 </div>
               </div>
             </div>
