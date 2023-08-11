@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import HeroRecipe from "../../components/HeroRecipe";
-import RecipeList from "../../components/RecipeList";
-import useContentful from "../../hooks/useContentful";
+import HeroRecipe from "../components/HeroRecipe";
+import RecipeList from "../components/RecipeList";
+import useContentful from "../hooks/useContentful";
 import { Helmet } from "react-helmet";
-import Loading from "../../components/Loading";
-import Error from "../../components/Error";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 const Homepage = () => {
   // state
@@ -31,6 +31,8 @@ const Homepage = () => {
 
         // find most recent recipes;
         result.sort((a, b) => a.created > b.created);
+
+        if (result.length > 10) result = result.slice(0, 10);
         setLatestRecipes(result);
       })
       .catch((error) => {
@@ -63,7 +65,6 @@ const Homepage = () => {
             <div>{latestRecipes && <RecipeList title={"Latest Recipes"} recipes={latestRecipes} />}</div>
           </>
         )}
-        <div className="mt-8"></div>
       </div>
     </>
   );

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import useContentful from "../../hooks/useContentful";
-import Loading from "../../components/Loading";
-import Error from "../../components/Error";
-import RecipeCard from "../../components/RecipeCard";
+import useContentful from "../hooks/useContentful";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
+import RecipeCard from "../components/RecipeCard";
 
 const SearchResults = () => {
   // STATE
@@ -56,7 +56,7 @@ const SearchResults = () => {
       {/* Display Components */}
       {!isLoading && !hasError && results && (
         <>
-          <h1 className="mt-8 text-xl">
+          <h1 className="text-xl">
             {results.length > 0
               ? `We found ${results.length} recipe${results.length === 1 ? "" : "s"} you might be interested in:`
               : "Sorry, none of our recipes match your search."}
@@ -69,7 +69,6 @@ const SearchResults = () => {
               ))}
             </div>
           )}
-          <div className="mt-8"></div>
         </>
       )}
     </div>
