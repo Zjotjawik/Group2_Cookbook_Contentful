@@ -15,7 +15,7 @@ const HeroRecipe = ({ recipe }) => {
 
           {/* Hero Content */}
           <div className="grid justify-end gap-y-4">
-            <Link to={`/recipes/${recipe.id}`}>
+            <Link to={`/recipe/${recipe.id}`}>
               <h4 className="font-bold uppercase text-orange-500">Have you tried this recipe yet?</h4>
               <h2 className="text-6xl font-light hover:text-orange-400">{recipe.name}</h2>
             </Link>
