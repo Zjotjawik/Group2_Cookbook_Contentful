@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isDropdown1Open, setIsDropdown1Open] = useState(false);
@@ -34,15 +36,12 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
-            <span className="text-3xl font-bold text-orange-500">Group 2 Cookbook</span>
+            <Link to="/" className="text-3xl font-bold text-orange-500">
+              Group 2 Cookbook
+            </Link>
           </div>
-          <div className="flex items-center justify-center flex-grow">
-            <input
-              type="text"
-              className="w-2/3 px-3 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Search for Recipe"
-            />
-            <button className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2">Search</button>
+          <div className="flex items-center justify-end flex-grow">
+            <SearchBar />
           </div>
         </div>
 
@@ -54,10 +53,8 @@ const Header = () => {
               onClick={toggleDropdown1}
             >
               <div>
-                <button
-                  className="inline-flex justify-center w-full px-10 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none"
-                >
-                  <span className='text-lg'>Dropdown 1</span>
+                <button className="inline-flex justify-center w-full px-10 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none">
+                  <span className="text-lg">Dropdown 1</span>
                 </button>
               </div>
               <div
@@ -67,22 +64,13 @@ const Header = () => {
                 onMouseLeave={() => setIsDropdown1Open(false)}
               >
                 <div className="py-1">
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 1
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 2
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 3
                   </a>
                 </div>
@@ -94,10 +82,8 @@ const Header = () => {
               onClick={toggleDropdown2}
             >
               <div>
-                <button
-                  className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none"
-                >
-                  <span className='text-lg'>Dropdown 2</span>
+                <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none">
+                  <span className="text-lg">Dropdown 2</span>
                 </button>
               </div>
               <div
@@ -107,22 +93,13 @@ const Header = () => {
                 onMouseLeave={() => setIsDropdown2Open(false)}
               >
                 <div className="py-1">
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 1
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 2
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 3
                   </a>
                 </div>
@@ -134,10 +111,8 @@ const Header = () => {
               onClick={toggleDropdown3}
             >
               <div>
-                <button
-                  className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none"
-                >
-                  <span className='text-lg'>Dropdown 3</span>
+                <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none">
+                  <span className="text-lg">Dropdown 3</span>
                 </button>
               </div>
               <div
@@ -147,22 +122,13 @@ const Header = () => {
                 onMouseLeave={() => setIsDropdown3Open(false)}
               >
                 <div className="py-1">
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 1
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 2
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Item 3
                   </a>
                 </div>
